@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄钟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">番茄钟</h1>
+
+    <!-- 圆形进度环 -->
+    <div class="timer-ring">
+      <svg width="280" height="280" viewBox="0 0 280 280">
+        <circle class="ring-bg" cx="140" cy="140" r="125" />
+        <circle class="ring-progress" cx="140" cy="140" r="125" id="progress-ring" />
+      </svg>
+      <div class="timer-display">
+        <span class="time-text" id="time-display">25:00</span>
+        <span class="status-text" id="status-label">准备开始</span>
+      </div>
+    </div>
+
+    <!-- 周期计数 -->
+    <div class="cycle-info" id="cycle-info">
+      已完成: <span id="cycle-count">0</span> 个番茄
+    </div>
+
+    <!-- 按钮 -->
+    <div class="controls">
+      <button class="btn btn-primary" id="btn-start">开始</button>
+      <button class="btn btn-secondary" id="btn-pause" disabled>暂停</button>
+      <button class="btn btn-secondary" id="btn-reset">重置</button>
+    </div>
+  </div>
+
+  <script src="timer.js"></script>
+</body>
+</html>

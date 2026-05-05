@@ -1,0 +1,159 @@
+/*
+ * 品牌色板
+ * - #0F5C53  深绿 (主色)
+ * - #A8CBBF  浅绿 (辅助色)
+ * - #E6C88B  暖金 (高亮点缀)
+ * - #2A2F33  深灰 (背景)
+ * - #F6F5F2  米白 (文字/浅色区)
+ * 版本：V1.0
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #2A2F33;
+  color: #F6F5F2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #E6C88B;
+  letter-spacing: 4px;
+}
+
+/* 圆形进度环 */
+.timer-ring {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+/* 进度环底色轨道 */
+.ring-bg {
+  fill: none;
+  stroke: #3a3f44;
+  stroke-width: 8;
+}
+
+/* 进度环前景（工作模式：暖金色） */
+.ring-progress {
+  fill: none;
+  stroke: #E6C88B;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 785.4;  /* 2 * PI * 125 ≈ 785.4 */
+  stroke-dashoffset: 0;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+
+/* 休息模式切换为浅绿色 */
+.ring-progress.break-mode {
+  stroke: #A8CBBF;
+  transition: stroke 0.3s;
+}
+
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.time-text {
+  font-size: 56px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  color: #F6F5F2;
+}
+
+.status-text {
+  font-size: 14px;
+  color: #A8CBBF;
+  letter-spacing: 2px;
+}
+
+/* 周期信息 */
+.cycle-info {
+  font-size: 14px;
+  color: #A8CBBF;
+}
+
+.cycle-info span {
+  color: #E6C88B;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* 按钮 */
+.controls {
+  display: flex;
+  gap: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 主按钮：深绿背景，米白文字 */
+.btn-primary {
+  background: #0F5C53;
+  color: #F6F5F2;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0a4a42;
+}
+
+/* 次要按钮：深灰背景，米白文字 */
+.btn-secondary {
+  background: #3a3f44;
+  color: #F6F5F2;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #4a4f54;
+}
